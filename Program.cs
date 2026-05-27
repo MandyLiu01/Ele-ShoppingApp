@@ -15,8 +15,8 @@
             do
             {
                 Console.WriteLine("Please select your option:");
-                Console.WriteLine("1. Login as Customer");
-                Console.WriteLine("2. Login as Staff");
+                Console.WriteLine("1. Please Login as Customer");
+                Console.WriteLine("2. Please Login as Staff");
                 Console.WriteLine("3. Exit");
                 Console.Write("Enter your choice: ");
 
