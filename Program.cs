@@ -1,143 +1,100 @@
-﻿namespace Ele_ShoppingApp
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace Ele_ShoppingApp
 {
     internal class Program
     {
+        // Main entry point for the application
         static void Main(string[] args)
-        { 
-                string customerUsername = "";
-                string customerPassword = "";
-                string continueChoice;
+        {
+            string continueChoice;
+            List<UserLogin> customerList = new List<UserLogin>();
+            customerList.Add(new UserLogin("customer", "password"));
 
-           
-                Console.WriteLine("==================================");
-                Console.WriteLine(" Welcome to Electronic Shopping App ");
-                Console.WriteLine("==================================");
+            // Display welcome banner
+            Console.WriteLine("===================================");
+            Console.WriteLine(" Welcome to Electronic Shopping App ");
+            Console.WriteLine("===================================");
+            Console.WriteLine();
+            // Main application loop
             do
             {
+                //This code is displaying the welcome page and ask
                 Console.WriteLine("Please select your option:");
                 Console.WriteLine("1. Please Login as Customer");
                 Console.WriteLine("2. Please Login as Staff");
                 Console.WriteLine("3. Exit");
+                Console.WriteLine();
                 Console.Write("Enter your choice: ");
 
                 int choice = Convert.ToInt32(Console.ReadLine());
 
-               switch (choice)
-               {
-                // Customer Menu
-                case 1:
+                // Handle user menu selection
+                switch (choice)
+                {
+                    // Customer Menu
+                    case 1:
 
-                    Console.WriteLine("\n1. Login to your account");
-                    Console.WriteLine("2. Signup to the App");
-                    Console.Write("Please enter your choice: ");
-                    int customerChoice = Convert.ToInt32(Console.ReadLine());
+                        // Customer submenu options
+                        Console.WriteLine("\n1. Login to your account");
+                        Console.WriteLine("2. Signup to the App");
+                        Console.Write("Please enter your choice: ");
+                        int customerChoice = Convert.ToInt32(Console.ReadLine());
 
-                    switch (customerChoice)
-                    {
-                        // Customer Login
-                        case 1:
+                        switch (customerChoice)
+                        {
+                            // Customer Login
+                            case 1:
+                                // Process customer login, here we pass the custmerList in the argument to get the existing customer account and his credential
+                                UserLogin.Login(customerList);
+                                break;
 
-                            Console.Write("Enter your Username: ");
-                            string loginUser = Console.ReadLine();
+                            // Customer Signup
+                            case 2:
+                                // Create new object New User which will hold the new user's account information and then add the new user to the customer list, here we call the Signup method to get the new user's account information and then we add it to the customer list, after that we call the Login method to allow the new user to log in immediately after signing up
+                                UserLogin newUser = UserLogin.Signup();
+                                customerList.Add(newUser);
+                                // Log in with the new user after signup, here we pass the customerList to the Login method to allow the new user to log in immediately after signing up
+                                UserLogin.Login(customerList);
+                                break;
+                            default:
+                            //This code displays an error message if the user enters an invalid choice in the customer
+                                Console.WriteLine("Invalid choice.");
+                                break;
+                        }
+                        break;
 
-                            Console.Write("Enter your Password: ");
-                            string loginPass = Console.ReadLine();
+                    // Staff Login
+                    case 2:
+                        // Access staff login menu
+                        UserLogin.StaffLogin();
 
-                            if (loginUser == customerUsername &&
-                                loginPass == customerPassword &&
-                                customerUsername != "")
-                            {
-                                Console.WriteLine("Customer login successful!");
-                            }
-                            else
-                            {
-                                Console.WriteLine("Invalid login. Goodbye!");
-                            }
+                        break;
 
-                            break;
-
-                        // Customer Signup
-                        case 2:
-
-                            Console.Write("Please create an Username: ");
-                            customerUsername = Console.ReadLine();
-
-                            Console.Write("Please create a Password: ");
-                            customerPassword = Console.ReadLine();
-
-                            Console.WriteLine("Signup successful!");
-
-                            // Login after signup
-                            Console.WriteLine("\nLogin to your account");
-
-                            Console.Write("Enter your Username: ");
-                            loginUser = Console.ReadLine();
-
-                            Console.Write("Enter your Password: ");
-                            loginPass = Console.ReadLine();
-
-                            if (loginUser == customerUsername &&
-                                loginPass == customerPassword)
-                            {
-                                Console.WriteLine("Customer login successful!");
-                            }
-                            else
-                            {
-                                Console.WriteLine("Invalid login");
-                            }
-
-                            break;
-
-                        default:
-                            Console.WriteLine("Invalid choice.");
-                            break;
-                    }
-
-                    break;
-
-                // Staff Login
-                case 2:
-
-                    Console.Write("Enter Staff Username: ");
-                    string staffUser = Console.ReadLine();
-
-                    Console.Write("Enter Staff Password: ");
-                    string staffPass = Console.ReadLine();
-
-                    if (staffUser == "admin" && staffPass == "admin")
-                    {
-                        Console.WriteLine("Staff login successful!");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Invalid login");
-                    }
-
-                    break;
-
-                // Exit
-                case 3:
-
-                        Console.WriteLine("Thank you for using the App!");
+                    // Exit application
+                    case 3:
+                        // Close the application
+                        Environment.Exit(0);
                         return;
 
                     default:
-                    Console.WriteLine("Invalid choice");
-                    break;
-            }
+                        Console.WriteLine("Invalid choice");
+                        break;
+                }
 
+                // Ask user if they want to continue using the app
                 Console.Write("\nDo you want to continue? (yes/no): ");
-                continueChoice = Console.ReadLine().ToLower();
+                continueChoice = Convert.ToString(Console.ReadLine() ?? "string").ToLower();
 
             } while (continueChoice == "yes");
 
             Console.WriteLine("GoodBye! You have a good day!");
         }//End of Main
-    
-
-
-    
     }
 }
-    
 
