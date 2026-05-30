@@ -94,6 +94,57 @@ namespace Ele_ShoppingApp
             } while (continueChoice == "yes");
 
             Console.WriteLine("GoodBye! You have a good day!");
+
+            //Create a products list to hold the products information, add some products to the list, this list will be used in the customer menu to display the products and allow the customer to add products to their cart
+            List<Products> products = new List<Products>();
+            // Ask the staff to enter information of the products
+            Console.Write("Please enter the product ID:");
+            int productID = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Please enter the product name:");
+            string productName = Console.ReadLine();
+            Console.Write("Please enter the product brand:");
+            string productBrand = Console.ReadLine();
+            Console.Write("Please enter the product price:");
+            double productPrice = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Please enter the product inventory:");
+            int productInventory = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Please enter the product type:");
+            string productType = Console.ReadLine();
+
+            // Create a new product object and add it to the list
+            Products newProduct = new Products(productID, productName, productBrand, productPrice, productInventory, productType, 0);
+            products.Add(newProduct);
+
+            // Display the products information to the user, here we call the DisplayProductInfor method to display the products information to the user
+            foreach (Products product in products)
+            {
+                product.DisplayProductInfor();
+            }
+
+            //Search the product from the list, here we call the SearchProduct method to search the product from the list
+            Products found = Products.SearchProduct(products, "laptop");
+            if (found != null)
+            {
+                Console.WriteLine("Product found:");
+                found.DisplayProductInfor();
+            }
+            else
+            {
+                Console.WriteLine("Product not found.");
+            }
+
+            //Create a cart object to hold the products that the customer wants to purchase
+            Cart cart = new Cart();
+            //Add a product to the cart, here we call the AddToCart method to add a product to the cart
+            cart.AddProduct();
+            //Display the cart information to the user, here we call the DisplayCart method to display the cart information to the user
+            cart.DisplayCart();
+            //Remove a product from the cart, here we call the RemoveFromCart method to remove a product from the cart
+            cart.RemoveProduct();
+            //Display the cart information to the user after removing a product
+            cart.DisplayCart();
+            //Checkout the cart, here we call the Checkout method to checkout the cart and display the total price to the user
+            cart.Checkout();
         }//End of Main
     }
 }
