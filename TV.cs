@@ -12,6 +12,7 @@ public class TV:Products
 
     // List Constructor
     public TV(string screenResolution, double screenSize)
-    {        ScreenResolution1 = screenResolution;
-        ScreenSize1 = screenSize;}
+    {   ScreenResolution1 = screenResolution;
+        ScreenSize1 = screenSize;
+    }
 }
