@@ -47,7 +47,6 @@ namespace Ele_ShoppingApp
             Console.WriteLine($"Product Type is: {ProductType}");
             Console.WriteLine($"Product Price is: ${ProductPrice}");
             Console.WriteLine($"Product Inventory is: {ProductInventory}");
-            
         }
         //Method: Update product information
         public virtual void UpdateProductInfor(int id, string name, string brand, double price, int inventory)
