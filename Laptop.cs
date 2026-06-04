@@ -1,11 +1,11 @@
 namespace Ele_ShoppingApp;
 
-public class Laptop: Products
+public class Laptop:Products
 {
     // List Fiels
     private int laptopRam;
     private int storage;
-    private string processor;
+    private string processor = string.Empty;
     private double size;
 
     // List Properties
@@ -15,7 +15,19 @@ public class Laptop: Products
     public double Size { get { return size; } set { size = value; } }
 
     // List Constructor
-    public Laptop(int laptopRam, int storage, string processor, double size)
+    public Laptop(int prodID,
+        string name,
+        string brand,
+        double price,
+        int stock,
+        string category,
+        int purchase,
+        int purchase1,
+        int laptopRam,
+        int storage,
+        string processor,
+        double size
+    ) : base(prodID, name, brand, price, stock, category, purchase, purchase1)
     {
         LaptopRAM = laptopRam;
         Storage = storage;

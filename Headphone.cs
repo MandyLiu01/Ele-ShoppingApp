@@ -12,9 +12,9 @@ namespace Ele_ShoppingApp
         public bool IsNoiseCancelling { get; set; }
 
         //Constructor
-        public Headphone() { }
-        public Headphone(int id, string name, string brand, double price, int inventory, string type, int purchase, bool isWireless, bool isNoiseCancelling)
-            : base(id, name, brand, price, inventory, "Headphone", purchase)
+      
+        public Headphone(int id, string name, string brand, double price, int inventory, string type, int purchase, int purchase1, bool isWireless, bool isNoiseCancelling)
+            : base(id, name, brand, price, inventory, "Headphone", purchase, purchase1)
         {
             
             IsWireless = isWireless;
