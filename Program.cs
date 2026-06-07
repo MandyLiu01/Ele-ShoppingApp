@@ -68,14 +68,24 @@ namespace Ele_ShoppingApp
                                 break;
                         }
                         break;
-
-                    // Staff Login
+                    // =============================================================
+                    // >>>>>>>>>>>>>>>>>>>>>>>>> STAFF LOGIN SECTION <<<<<<<<<<<<<<<<<<<<<<<<<
+                    // Staff Login section: this branch handles staff access and routes into the admin staff menu
+                    // >>>>>>>>>>>>>>>>>>>>>>>>> STAFF LOGIN SECTION <<<<<<<<<<<<<<<<<<<<<<<<<
+                    // =============================================================
                     case 2:
                         // Access staff login menu
+                        Console.WriteLine();
+                        Console.WriteLine("-------------------Staff Login------------------");
+                        Console.WriteLine("------------------------------------------------");
                         UserLogin.StaffLogin();
 
                         break;
 
+                    // =============================================================
+                    // >>>>>>>>>>>>>>>>>>>>>>>>> END OF STAFF LOGIN SECTION <<<<<<<<<<<<<<<<<<<<<<
+                    // The staff menu branch stops here and returns to the main menu loop.
+                    // =============================================================
                     // Exit application
                     case 3:
                         // Close the application
@@ -101,18 +111,18 @@ namespace Ele_ShoppingApp
             Console.Write("Please enter the product ID:");
             int productID = Convert.ToInt32(Console.ReadLine());
             Console.Write("Please enter the product name:");
-            string productName = Console.ReadLine();
+            string productName = Convert.ToString(Console.ReadLine() ?? "string");
             Console.Write("Please enter the product brand:");
-            string productBrand = Console.ReadLine();
+            string productBrand = Convert.ToString(Console.ReadLine() ?? "string");
             Console.Write("Please enter the product price:");
             double productPrice = Convert.ToDouble(Console.ReadLine());
             Console.Write("Please enter the product inventory:");
             int productInventory = Convert.ToInt32(Console.ReadLine());
             Console.Write("Please enter the product type:");
-            string productType = Console.ReadLine();
+            string productType = Convert.ToString(Console.ReadLine() ?? "string");
 
             // Create a new product object and add it to the list
-            Products newProduct = new Products(productID, productName, productBrand, productPrice, productInventory, productType, 0);
+            Products newProduct = new Products(productID, productName, productBrand, productPrice, productInventory, productType, 0, 0);
             products.Add(newProduct);
 
             // Display the products information to the user, here we call the DisplayProductInfor method to display the products information to the user

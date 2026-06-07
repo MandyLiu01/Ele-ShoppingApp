@@ -11,8 +11,21 @@ public class TV:Products
     public double ScreenSize1 { get { return screenSize; } set { screenSize = value; } }
 
     // List Constructor
-    public TV(string screenResolution, double screenSize)
-    {   ScreenResolution1 = screenResolution;
-        ScreenSize1 = screenSize;
+    // List Constructor
+    public TV(int prodID,
+        string name,
+        string brand,
+        double price,
+        int stock,
+        string category,
+        int purchase,
+        int purchase1,
+        string screenRes,
+        double screenSz
+    ) : base(prodID, name, brand, price, stock, category, purchase, purchase1)
+    {
+        screenResolution = screenRes;
+        screenSize = screenSz;
     }
+
 }
