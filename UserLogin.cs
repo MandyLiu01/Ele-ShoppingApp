@@ -74,6 +74,12 @@ public class UserLogin
                     Console.WriteLine();
                     Console.WriteLine("Customer login successful!");
                     isAuthenticated = true;
+                    //after the customer successfully login, show the Customer menu
+                    List<Products> products = ProductData.GetAllProducts();//Refers to Products entered in the list from admin (staff side)
+
+                    CustomerMenu menu = new CustomerMenu(products);
+                    menu.ShowMenu();
+
                     break;
                 }
             }
