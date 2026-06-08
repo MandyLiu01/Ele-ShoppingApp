@@ -7,46 +7,32 @@ namespace Ele_ShoppingApp
     //Parent Class
     public class Products
     {
-        // List Fiels 
-        private int productID;
-        private string productName;
-        private string productBrand;
-        private double productPrice;
-        private int productInventory;
-        private string productType;
-        private int numberOfProducts;
-        internal readonly int Purchase;
-
         // List Properties
         public int ProductID { get; set; }
         public string ProductName { get; set; }
         public string ProductBrand { get; set; }
         public double ProductPrice { get; set; }
-        public int ProductInventory { get; set; }
+        public int ProductQuantity { get; set; }
         public string ProductType { get; set; }
         public int NumberOfProducts { get; set; }
+        public int Purchase { get; set; }
 
         // List Constructor
-        public Products() { }
-        public Products(int id, string name, string brand, double price, int inventory, string type, int purchase)
+        public Products(int id, string name, string brand, double price, int prodQuantity, string type, int purchase, int purchase1)
         {
             ProductID = id;
             ProductName = name;
             ProductBrand = brand;
             ProductPrice = price;
-            ProductInventory = inventory;
+            ProductQuantity = prodQuantity;
             ProductType = type;
-            NumberOfProducts = purchase;    
+            NumberOfProducts = purchase;
+            Purchase = purchase;
         }
         //Method: Display product information
         public virtual void DisplayProductInfor()
         {
-            Console.WriteLine($"Product ID is: {ProductID}");
-            Console.WriteLine($"Product Name is: {ProductName}");
-            Console.WriteLine($"Product Brand is: {ProductBrand}");
-            Console.WriteLine($"Product Type is: {ProductType}");
-            Console.WriteLine($"Product Price is: ${ProductPrice}");
-            Console.WriteLine($"Product Inventory is: {ProductInventory}");
+           Console.WriteLine($"\n Product ID: \t{ProductID} \n Product Name: \t{ProductName} \n Product Brand: \t{ProductBrand} \n Product Price: \t{ProductPrice} \n Product Quantity: \t{ProductQuantity} \n Product Type: \t{ProductType} \n Number of Purchases: \t{NumberOfProducts}");
         }
         //Method: Update product information
         public virtual void UpdateProductInfor(int id, string name, string brand, double price, int inventory)
@@ -55,7 +41,7 @@ namespace Ele_ShoppingApp
             ProductName = name;
             ProductBrand = brand;
             ProductPrice = price;
-            ProductInventory = inventory;
+            ProductQuantity = inventory;
         }
         //Method: Search the product by name
         public static Products SearchProduct(List<Products> products, string keyword)
@@ -67,9 +53,23 @@ namespace Ele_ShoppingApp
                     return product;
                 }
             }
-            return null; // Return null if no matching product is found
             Console.WriteLine("The product is not found.");
+            return null;
         }
+
+        //Adds or removes quantity from inventory.
+    //Returns false when the change would make inventory negative.
+
+    public bool ChangeQuantity(int delta)
+    {
+        if (ProductQuantity + delta < 0)
+        {
+            return false;
+        }
+
+        ProductQuantity += delta;
+        return true;
+    }
         
     }//End of Parent Class
 

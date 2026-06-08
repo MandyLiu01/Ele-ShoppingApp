@@ -39,7 +39,7 @@ namespace Ele_ShoppingApp
         public void CalculateTotal()
         {
             TotalPrice = 0;
-            foreach (var product in CartItems)
+            foreach (Products product in CartItems)
             {
                 TotalPrice += product.ProductPrice * product.Purchase;
             }
@@ -53,7 +53,7 @@ namespace Ele_ShoppingApp
                 Console.WriteLine("Your cart is empty.");
                 return;
             }
-            foreach (var product in CartItems)
+            foreach (Products product in CartItems)
             {
                 product.DisplayProductInfor();
             }

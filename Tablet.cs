@@ -10,9 +10,8 @@ namespace Ele_ShoppingApp
         public double ScreenSize { get; set; }
         public double BatteryLife { get; set; }
         //Constructor
-        public Tablet() { }
-        public Tablet(int id, string name, string brand, double price, int inventory, string type, int purchase, double screenSize, double batteryLife)
-            : base(id, name, brand, price, inventory, "Tablet", purchase)
+        public Tablet(int id, string name, string brand, double price, int inventory, string type, int purchase, int purchase1, double screenSize, double batteryLife)
+            : base(id, name, brand, price, inventory, "Tablet", purchase, purchase1)
         {
             ScreenSize = screenSize;
             BatteryLife = batteryLife;
