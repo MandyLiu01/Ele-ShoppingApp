@@ -34,4 +34,14 @@ public class Laptop:Products
         Processor = processor;
         Size = size;
     }
+
+    //Display laptop information
+    public override void DisplayProductInfor()
+    {
+        base.DisplayProductInfor();
+        Console.WriteLine($"This laptop's RAM is: {LaptopRAM} GB");
+        Console.WriteLine($"This laptop's storage is: {Storage} GB");
+        Console.WriteLine($"This laptop's processor is: {Processor}");
+        Console.WriteLine($"This laptop's size is: {Size} inches");
+    }
 }
