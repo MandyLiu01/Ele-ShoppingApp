@@ -153,9 +153,11 @@ public class UserLogin
             Console.WriteLine("| 2. | Remove product                              |");
             Console.WriteLine("| 3. | Display Products                            |");
             Console.WriteLine("| 4. | Search Product                              |");
+            Console.WriteLine("| n. | To go back to preview menu                  |");
             Console.WriteLine("|____|_____________________________________________|");
             Console.WriteLine();
-            Console.WriteLine("Enter your choice or press 'n' to go back to the main menu...");
+            
+            Console.Write("Your choice: ");
 
             string input = Console.ReadLine() ?? string.Empty;
             if (input.Trim().ToLower() == "n")
@@ -187,10 +189,20 @@ public class UserLogin
                         Console.WriteLine("| 1. | TV                                    |");
                         Console.WriteLine("| 2. | Smartphone                            |");
                         Console.WriteLine("| 3. | Laptop                                |");
-                        Console.WriteLine("----------------------------------------------");
+                        Console.WriteLine("| 4. | Tablet                                |");
+                        Console.WriteLine("| 5. | Headphones                            |");
+                        Console.WriteLine("| 6. | Smartwatch                            |");
+                        Console.WriteLine("| n. | To go back to previous menu           |");
+                        Console.WriteLine("|____|_______________________________________|");
                         Console.WriteLine();
                         Console.Write("Enter your choice: ");
                         string typeInput = Console.ReadLine() ?? string.Empty;
+
+                        if (typeInput.Trim().ToLower() == "n")
+                        {
+                            Console.WriteLine("Returning to the previous menu...");
+                            break;
+                        }
 
                         if (!int.TryParse(typeInput, out int typeChoice))
                         {
@@ -248,6 +260,7 @@ public class UserLogin
                                 {
                                     newProduct = new TV(productId, productName, productBrand, productPrice, productQuantity, "TV", 0, 0, screenResolution, screenSize);
                                     productList.Add(newProduct);
+                                    Console.WriteLine();
                                     Console.WriteLine("TV product added successfully!");
                                 }
                                 break;
@@ -270,6 +283,7 @@ public class UserLogin
                                 {
                                     newProduct = new Products(productId, productName, productBrand, productPrice, productQuantity, "Smartphone", 0, 0);
                                     productList.Add(newProduct);
+                                    Console.WriteLine();
                                     Console.WriteLine("Smartphone product added successfully!");
                                 }
                                 break;
@@ -311,9 +325,77 @@ public class UserLogin
                                 {
                                     newProduct = new Laptop(productId, productName, productBrand, productPrice, productQuantity, "Laptop", laptopRam, storage, stock, 0, processor, size);
                                     productList.Add(newProduct);
+                                    Console.WriteLine();
                                     Console.WriteLine("Laptop product added successfully!");
                                 }
                                 break;
+                            case 4:
+                                Console.Write("Enter tablet display size (in inches): ");
+                                if (!double.TryParse(Console.ReadLine(), out double tabletSize))
+                                {
+                                    Console.WriteLine("Invalid tablet size.");
+                                    break;
+                                }
+                                Products? existingTablet = productList.Find(p => string.Equals(p.ProductName, productName, StringComparison.OrdinalIgnoreCase) && string.Equals(p.ProductType, "Tablet", StringComparison.OrdinalIgnoreCase));
+                                if (existingTablet != null)
+                                {
+                                    existingTablet.ChangeQuantity(productQuantity);
+                                    Console.WriteLine($"Tablet product already exists. Updated quantity to {existingTablet.ProductQuantity}.");
+                                }
+                                else
+                                {
+                                    newProduct = new Tablet(productId, productName, productBrand, productPrice, productQuantity, 0, 0, 0, tabletSize);
+                                    productList.Add(newProduct);
+                                    Console.WriteLine();
+                                    Console.WriteLine("Tablet product added successfully!");
+                                }
+                                break;
+                            case 5:
+                                Console.Write("Enter headphone type (e.g., over-ear, in-ear): ");
+                                string headphoneType = Console.ReadLine() ?? string.Empty;
+                                Products? existingHeadphones = productList.Find(p => string.Equals(p.ProductName, productName, StringComparison.OrdinalIgnoreCase) && string.Equals(p.ProductType, "Headphones", StringComparison.OrdinalIgnoreCase));
+                                if (existingHeadphones != null)
+                                {
+                                    existingHeadphones.ChangeQuantity(productQuantity);
+                                    Console.WriteLine($"Headphones product already exists. Updated quantity to {existingHeadphones.ProductQuantity}.");
+                                }
+                                else
+                                {
+                                    newProduct = new Headphone(productId, productName, productBrand, productPrice, productQuantity, 0, 0,
+                                        headphoneType.Equals("wireless", StringComparison.OrdinalIgnoreCase),
+                                        headphoneType.Equals("noise-cancelling", StringComparison.OrdinalIgnoreCase));
+                                    productList.Add(newProduct);
+                                    Console.WriteLine();
+                                    Console.WriteLine("Headphones product added successfully!");
+                                }
+                                break;
+                            case 6:
+                                Console.Write("Enter smartwatch display size (in inches): ");
+                                if (!double.TryParse(Console.ReadLine(), out double watchSize))
+                                {
+                                    Console.WriteLine("Invalid smartwatch size.");
+                                    break;
+                                }
+                                Console.Write("Enter smartwatch type (e.g., waterproof, heart-rate-monitor): ");
+                                string smartwatchType = Console.ReadLine() ?? string.Empty;
+                                Products? existingWatch = productList.Find(p => string.Equals(p.ProductName, productName, StringComparison.OrdinalIgnoreCase) && string.Equals(p.ProductType, "Smartwatch", StringComparison.OrdinalIgnoreCase));
+                                if (existingWatch != null)
+                                {
+                                    existingWatch.ChangeQuantity(productQuantity);
+                                    Console.WriteLine($"Smartwatch product already exists. Updated quantity to {existingWatch.ProductQuantity}.");
+                                }
+                                else
+                                {
+                                    newProduct = new Smartwatch(productId, productName, productBrand, productPrice, productQuantity,
+                                        "Smartwatch", 0, 0,
+                                        smartwatchType.Equals("waterproof", StringComparison.OrdinalIgnoreCase),
+                                        smartwatchType.Equals("heart-rate-monitor", StringComparison.OrdinalIgnoreCase));
+                                    productList.Add(newProduct);
+                                    Console.WriteLine();
+                                    Console.WriteLine("Smartwatch product added successfully!");
+                                }
+                                break;
+                            
                             default:
                                 Console.WriteLine("Invalid type selection.");
                                 break;

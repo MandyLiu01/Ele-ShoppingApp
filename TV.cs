@@ -28,4 +28,12 @@ public class TV:Products
         screenSize = screenSz;
     }
 
+    //Display TV information
+    public override void DisplayProductInfor()
+    {
+        base.DisplayProductInfor();
+        Console.WriteLine($"This TV's screen resolution is: {ScreenResolution1}");
+        Console.WriteLine($"This TV's screen size is: {ScreenSize1} inches");
+    }
+
 }

@@ -2,26 +2,31 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Ele_ShoppingApp
+namespace Ele_ShoppingApp;
+
+public class Tablet : Products
 {
-    public class Tablet : Products
-    {
-        //Properties
-        public double ScreenSize { get; set; }
-        public double BatteryLife { get; set; }
+    //Fields
+    private double screenSize;
+    private double batteryLife;
+
+    //Properties
+    public double ScreenSize { get{ return screenSize; } set{screenSize = value;} }
+    public double BatteryLife { get{ return batteryLife; } set{batteryLife = value;} }
+
         //Constructor
-        public Tablet(int id, string name, string brand, double price, int inventory, string type, int purchase, int purchase1, double screenSize, double batteryLife)
+public Tablet(int id, string name, string brand, double price, int inventory, int purchase, int purchase1, double screenSize, double batteryLife)
             : base(id, name, brand, price, inventory, "Tablet", purchase, purchase1)
-        {
+{
             ScreenSize = screenSize;
             BatteryLife = batteryLife;
         }
         //Method: Display tablet information
-        public override void DisplayProductInfor()
-        {
+    public override void DisplayProductInfor()
+    {
             base.DisplayProductInfor();
             Console.WriteLine($"This tablet's screen size is: {ScreenSize}");
             Console.WriteLine($"This table's battery life is: {BatteryLife} years");
-        }
-    }//End of Tablet class
-}//End of namespace
+    }
+}//End of Tablet class
+
