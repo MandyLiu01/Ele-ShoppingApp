@@ -1,6 +1,6 @@
 namespace Ele_ShoppingApp;
 
-public class Smartphone
+public class Smartphone: Products
 {
     // List Fiels  
     private string cameraMp = string.Empty;
@@ -11,7 +11,9 @@ public class Smartphone
     public double OperatingSystem1 { get { return operatingSystem; } set { operatingSystem = value; } }
 
     // List Constructor
-    public Smartphone(string cameraMp, double operatingSystem)
+    // Updated to pass required parameters to base Products constructor.
+    public Smartphone(int id, string name, string description, double price, int quantity, string category, int extra1, int extra2, string cameraMp, double operatingSystem)
+        : base(id, name, description, price, quantity, category, extra1, extra2)
     {
         CameraMp1 = cameraMp;
         OperatingSystem1 = operatingSystem;
