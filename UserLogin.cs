@@ -153,9 +153,10 @@ public class UserLogin
             Console.WriteLine("| 2. | Remove product                              |");
             Console.WriteLine("| 3. | Display Products                            |");
             Console.WriteLine("| 4. | Search Product                              |");
+            Console.WriteLine("| n. | To go back to preview menu                  |");
             Console.WriteLine("|____|_____________________________________________|");
             Console.WriteLine();
-            Console.WriteLine("Enter your choice or press 'n' to go back to the main menu...");
+            
             Console.Write("Your choice: ");
 
             string input = Console.ReadLine() ?? string.Empty;
@@ -191,10 +192,17 @@ public class UserLogin
                         Console.WriteLine("| 4. | Tablet                                |");
                         Console.WriteLine("| 5. | Headphones                            |");
                         Console.WriteLine("| 6. | Smartwatch                            |");
+                        Console.WriteLine("| n. | To go back to previous menu           |");
                         Console.WriteLine("|____|_______________________________________|");
                         Console.WriteLine();
                         Console.Write("Enter your choice: ");
                         string typeInput = Console.ReadLine() ?? string.Empty;
+
+                        if (typeInput.Trim().ToLower() == "n")
+                        {
+                            Console.WriteLine("Returning to the previous menu...");
+                            break;
+                        }
 
                         if (!int.TryParse(typeInput, out int typeChoice))
                         {
@@ -252,6 +260,7 @@ public class UserLogin
                                 {
                                     newProduct = new TV(productId, productName, productBrand, productPrice, productQuantity, "TV", 0, 0, screenResolution, screenSize);
                                     productList.Add(newProduct);
+                                    Console.WriteLine();
                                     Console.WriteLine("TV product added successfully!");
                                 }
                                 break;
@@ -274,6 +283,7 @@ public class UserLogin
                                 {
                                     newProduct = new Products(productId, productName, productBrand, productPrice, productQuantity, "Smartphone", 0, 0);
                                     productList.Add(newProduct);
+                                    Console.WriteLine();
                                     Console.WriteLine("Smartphone product added successfully!");
                                 }
                                 break;
@@ -315,6 +325,7 @@ public class UserLogin
                                 {
                                     newProduct = new Laptop(productId, productName, productBrand, productPrice, productQuantity, "Laptop", laptopRam, storage, stock, 0, processor, size);
                                     productList.Add(newProduct);
+                                    Console.WriteLine();
                                     Console.WriteLine("Laptop product added successfully!");
                                 }
                                 break;
@@ -335,6 +346,7 @@ public class UserLogin
                                 {
                                     newProduct = new Tablet(productId, productName, productBrand, productPrice, productQuantity, 0, 0, 0, tabletSize);
                                     productList.Add(newProduct);
+                                    Console.WriteLine();
                                     Console.WriteLine("Tablet product added successfully!");
                                 }
                                 break;
@@ -353,6 +365,7 @@ public class UserLogin
                                         headphoneType.Equals("wireless", StringComparison.OrdinalIgnoreCase),
                                         headphoneType.Equals("noise-cancelling", StringComparison.OrdinalIgnoreCase));
                                     productList.Add(newProduct);
+                                    Console.WriteLine();
                                     Console.WriteLine("Headphones product added successfully!");
                                 }
                                 break;
@@ -378,6 +391,7 @@ public class UserLogin
                                         smartwatchType.Equals("waterproof", StringComparison.OrdinalIgnoreCase),
                                         smartwatchType.Equals("heart-rate-monitor", StringComparison.OrdinalIgnoreCase));
                                     productList.Add(newProduct);
+                                    Console.WriteLine();
                                     Console.WriteLine("Smartwatch product added successfully!");
                                 }
                                 break;
