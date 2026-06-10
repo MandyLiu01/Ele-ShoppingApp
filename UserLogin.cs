@@ -201,7 +201,7 @@ public class UserLogin
                         if (typeInput.Trim().ToLower() == "n")
                         {
                             Console.WriteLine("Returning to the previous menu...");
-                            break;
+                            break; // Breaks out of the switch to return to the staff menu loop
                         }
 
                         if (!int.TryParse(typeInput, out int typeChoice))

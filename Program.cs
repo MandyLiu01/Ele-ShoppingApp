@@ -26,7 +26,7 @@ namespace Ele_ShoppingApp
             {
                 //This code is displaying the welcome page and ask
                 Console.WriteLine("Please select your option:");
-                Console.WriteLine("-----------------------------");
+                Console.WriteLine("---------------------------------");
                 Console.WriteLine("| 1. | Please Login as Customer |");
                 Console.WriteLine("| 2. | Please Login as Staff    |");
                 Console.WriteLine("| 3. | Exit                     |");
@@ -43,8 +43,12 @@ namespace Ele_ShoppingApp
                     case 1:
 
                         // Customer submenu options
-                        Console.WriteLine("\n1. Login to your account");
-                        Console.WriteLine("2. Signup to the App");
+                        Console.WriteLine("------------------------------------");
+                        Console.WriteLine("| 1. | Login to your account       |");
+                        Console.WriteLine("| 2. | Signup to the App           |");
+                        Console.WriteLine("| n. | To go back to preview menu  |");
+                        Console.WriteLine("------------------------------------");
+                        Console.WriteLine();
                         Console.Write("Please enter your choice: ");
                         int customerChoice = Convert.ToInt32(Console.ReadLine());
 
